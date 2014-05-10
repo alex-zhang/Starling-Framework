@@ -20,6 +20,7 @@ package starling.display
     
     import starling.core.RenderSupport;
     import starling.core.Starling;
+    import starling.core.starling_internal;
     import starling.errors.AbstractClassError;
     import starling.errors.AbstractMethodError;
     import starling.events.Event;
@@ -147,6 +148,8 @@ package starling.display
         private var mTransformationMatrix:Matrix;
         private var mOrientationChanged:Boolean;
         private var mFilter:FragmentFilter;
+		
+		public var zOrder:Number = 0.0;
         
         /** Helper objects. */
         private static var sAncestors:Vector.<DisplayObject> = new <DisplayObject>[];
@@ -156,11 +159,11 @@ package starling.display
         /** @private */ 
         public function DisplayObject()
         {
-            if (Capabilities.isDebugger && 
-                getQualifiedClassName(this) == "starling.display::DisplayObject")
-            {
-                throw new AbstractClassError();
-            }
+//            if (Capabilities.isDebugger && 
+//                getQualifiedClassName(this) == "starling.display::DisplayObject")
+//            {
+//                throw new AbstractClassError();
+//            }
             
             mX = mY = mPivotX = mPivotY = mRotation = mSkewX = mSkewY = 0.0;
             mScaleX = mScaleY = mAlpha = 1.0;            
@@ -355,7 +358,7 @@ package starling.display
         // internal methods
         
         /** @private */
-        internal function setParent(value:DisplayObjectContainer):void 
+        starling_internal function setParent(value:DisplayObjectContainer):void 
         {
             // check for a recursion
             var ancestor:DisplayObject = value;
@@ -736,7 +739,7 @@ package starling.display
         public function set filter(value:FragmentFilter):void { mFilter = value; }
         
         /** The display object container that contains this display object. */
-        public function get parent():DisplayObjectContainer { return mParent; }
+        public function get parent():DisplayObject { return mParent; }
         
         /** The topmost object in the display tree the object is part of. */
         public function get base():DisplayObject
