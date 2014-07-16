@@ -7,7 +7,18 @@ starling/doc/html/
 .settings/
 .flexProperties
 .FlexUnitSettings
+.project
 .idea/
 
 # OS X folders
 .DS_Store
+
+*.lnk
+
+Thumbs.db
+*.stackdump
+*.local.properties
+*.iml
+
+
+/starling/bin
