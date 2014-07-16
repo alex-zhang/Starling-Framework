@@ -150,6 +150,8 @@ package starling.display
         private var mFilter:FragmentFilter;
 		
 		public var zOrder:Number = 0.0;
+		
+		private var mMyData:Object;
         
         /** Helper objects. */
         private static var sAncestors:Vector.<DisplayObject> = new <DisplayObject>[];
@@ -172,6 +174,13 @@ package starling.display
             mTransformationMatrix = new Matrix();
             mOrientationChanged = mUseHandCursor = false;
         }
+		
+		public function get myData():Object
+		{
+			if(!mMyData) mMyData = {};
+			
+			return mMyData;
+		}
         
         /** Disposes all resources of the display object. 
           * GPU buffers are released, event listeners are removed, filters are disposed. */
